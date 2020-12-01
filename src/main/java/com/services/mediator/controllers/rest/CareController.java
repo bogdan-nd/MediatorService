@@ -1,4 +1,4 @@
-package com.services.mediator.controllers;
+package com.services.mediator.controllers.rest;
 
 import com.services.mediator.entities.Club;
 import com.services.mediator.entities.Horse;
@@ -48,7 +48,7 @@ public class CareController {
     }
 
     @PostMapping("feed")
-    public ResponseEntity<String> feedHorse(@RequestBody AppointmentDTO dto){
+    public ResponseEntity<String> feedHorse(@RequestBody AppointmentDTO dto) {
         UUID groomId = dto.getSpecialistId();
         try {
             int groomPrice = groomService.getGroomPriceById(groomId);

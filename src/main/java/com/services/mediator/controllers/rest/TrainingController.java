@@ -1,16 +1,11 @@
-package com.services.mediator.controllers;
+package com.services.mediator.controllers.rest;
 
-import com.services.mediator.entities.Client;
 import com.services.mediator.entities.Training;
 import com.services.mediator.entities.dto.TrainingDTO;
 import com.services.mediator.services.TrainingService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 

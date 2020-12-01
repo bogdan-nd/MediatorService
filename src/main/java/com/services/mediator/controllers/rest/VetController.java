@@ -1,4 +1,4 @@
-package com.services.mediator.controllers;
+package com.services.mediator.controllers.rest;
 
 import com.services.mediator.entities.Vet;
 import com.services.mediator.entities.dto.VetDTO;

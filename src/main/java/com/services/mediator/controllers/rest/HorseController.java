@@ -1,4 +1,4 @@
-package com.services.mediator.controllers;
+package com.services.mediator.controllers.rest;
 
 import com.services.mediator.entities.Appointment;
 import com.services.mediator.entities.Club;

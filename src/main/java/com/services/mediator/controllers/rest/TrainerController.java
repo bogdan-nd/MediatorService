@@ -1,4 +1,4 @@
-package com.services.mediator.controllers;
+package com.services.mediator.controllers.rest;
 
 
 import com.services.mediator.entities.Trainer;
@@ -7,7 +7,6 @@ import com.services.mediator.services.TrainerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.UUID;
 

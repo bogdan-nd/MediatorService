@@ -1,4 +1,4 @@
-package com.services.mediator.controllers;
+package com.services.mediator.controllers.rest;
 
 import com.services.mediator.entities.Club;
 import com.services.mediator.entities.dto.ClubDTO;
@@ -7,8 +7,6 @@ import com.services.mediator.services.ClubService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
 
 
 @RestController
