@@ -11,7 +11,7 @@ public class VetGrpcController extends VetServiceGrpc.VetServiceImplBase {
 
     @Override
     public void showVets(VetEmpty request, StreamObserver<VetResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -24,7 +24,7 @@ public class VetGrpcController extends VetServiceGrpc.VetServiceImplBase {
 
     @Override
     public void showVetById(VetIdRequest request, StreamObserver<VetResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -37,7 +37,7 @@ public class VetGrpcController extends VetServiceGrpc.VetServiceImplBase {
 
     @Override
     public void addVet(VetRequest request, StreamObserver<VetResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -50,7 +50,7 @@ public class VetGrpcController extends VetServiceGrpc.VetServiceImplBase {
 
     @Override
     public void deleteVet(VetIdRequest request, StreamObserver<VetEmpty> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
         VetServiceGrpc.VetServiceBlockingStub stub = VetServiceGrpc.newBlockingStub(channel);

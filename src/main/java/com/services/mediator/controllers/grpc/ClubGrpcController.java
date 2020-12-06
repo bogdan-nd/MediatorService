@@ -12,7 +12,7 @@ public class ClubGrpcController extends ClubServiceGrpc.ClubServiceImplBase {
 
     @Override
     public void getClub(ClubEmpty request, StreamObserver<ClubResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clubservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clubservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -25,7 +25,7 @@ public class ClubGrpcController extends ClubServiceGrpc.ClubServiceImplBase {
 
     @Override
     public void addClub(CreateClubRequest request, StreamObserver<ClubResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clubservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clubservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -38,7 +38,7 @@ public class ClubGrpcController extends ClubServiceGrpc.ClubServiceImplBase {
 
     @Override
     public void spendMoney(ClubMoneyRequest request, StreamObserver<ClubStringResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clubservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clubservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -51,7 +51,7 @@ public class ClubGrpcController extends ClubServiceGrpc.ClubServiceImplBase {
 
     @Override
     public void earnMoney(ClubMoneyRequest request, StreamObserver<ClubStringResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clubservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clubservice", 9090)
                 .usePlaintext()
                 .build();
 

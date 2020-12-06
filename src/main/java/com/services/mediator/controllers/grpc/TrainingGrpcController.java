@@ -11,7 +11,7 @@ public class TrainingGrpcController extends TrainingServiceGrpc.TrainingServiceI
 
     @Override
     public void showTrainings(TrainingEmpty request, StreamObserver<TrainingResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://trainingservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("trainingservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -24,7 +24,7 @@ public class TrainingGrpcController extends TrainingServiceGrpc.TrainingServiceI
 
     @Override
     public void showTrainingById(IdRequest request, StreamObserver<TrainingResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://trainingservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("trainingservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -37,7 +37,7 @@ public class TrainingGrpcController extends TrainingServiceGrpc.TrainingServiceI
 
     @Override
     public void addTraining(TrainingRequest request, StreamObserver<TrainingResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://trainingservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("trainingservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -50,7 +50,7 @@ public class TrainingGrpcController extends TrainingServiceGrpc.TrainingServiceI
 
     @Override
     public void deleteTraining(IdRequest request, StreamObserver<TrainingEmpty> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://trainingservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("trainingservice", 9090)
                 .usePlaintext()
                 .build();
 

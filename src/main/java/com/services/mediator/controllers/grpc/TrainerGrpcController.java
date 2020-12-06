@@ -12,7 +12,7 @@ public class TrainerGrpcController extends TrainerServiceGrpc.TrainerServiceImpl
 
     @Override
     public void showTrainers(TrainerEmpty request, StreamObserver<TrainerResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -25,7 +25,7 @@ public class TrainerGrpcController extends TrainerServiceGrpc.TrainerServiceImpl
 
     @Override
     public void getSuitableTrainer(SportCategoryRequest request, StreamObserver<TrainerResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -38,7 +38,7 @@ public class TrainerGrpcController extends TrainerServiceGrpc.TrainerServiceImpl
 
     @Override
     public void showTrainerById(TrainerIdRequest request, StreamObserver<TrainerResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -51,7 +51,7 @@ public class TrainerGrpcController extends TrainerServiceGrpc.TrainerServiceImpl
 
     @Override
     public void addTrainer(TrainerRequest request, StreamObserver<TrainerResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -64,7 +64,7 @@ public class TrainerGrpcController extends TrainerServiceGrpc.TrainerServiceImpl
 
     @Override
     public void deleteTrainer(TrainerIdRequest request, StreamObserver<TrainerEmpty> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 

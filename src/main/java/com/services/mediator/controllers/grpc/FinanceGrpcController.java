@@ -14,7 +14,7 @@ public class FinanceGrpcController extends FinanceServiceGrpc.FinanceServiceImpl
 
     @Override
     public void getClientPayments(PaymentIdRequest request, StreamObserver<PaymentResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://financeservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("financeservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -27,7 +27,7 @@ public class FinanceGrpcController extends FinanceServiceGrpc.FinanceServiceImpl
 
     @Override
     public void createPayment(PaymentRequest request, StreamObserver<PaymentResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://financeservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("financeservice", 9090)
                 .usePlaintext()
                 .build();
 

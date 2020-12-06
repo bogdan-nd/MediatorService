@@ -11,7 +11,7 @@ public class ClientGrpcController extends ClientServiceGrpc.ClientServiceImplBas
 
     @Override
     public void getClients(ClientEmpty request, StreamObserver<ClientResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clientservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clientservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -24,7 +24,7 @@ public class ClientGrpcController extends ClientServiceGrpc.ClientServiceImplBas
 
     @Override
     public void getClientById(ClientIdRequest request, StreamObserver<ClientResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clientservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clientservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -37,7 +37,7 @@ public class ClientGrpcController extends ClientServiceGrpc.ClientServiceImplBas
 
     @Override
     public void addClient(ClientRequest request, StreamObserver<ClientResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clientservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clientservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -50,7 +50,7 @@ public class ClientGrpcController extends ClientServiceGrpc.ClientServiceImplBas
 
     @Override
     public void spendMoney(ClientMoneyRequest request, StreamObserver<ClientStringResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clientservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clientservice", 9090)
                 .usePlaintext()
                 .build();
         ClientServiceGrpc.ClientServiceBlockingStub stub = ClientServiceGrpc.newBlockingStub(channel);
@@ -62,7 +62,7 @@ public class ClientGrpcController extends ClientServiceGrpc.ClientServiceImplBas
 
     @Override
     public void earnMoney(ClientMoneyRequest request, StreamObserver<ClientStringResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://clientservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("clientservice", 9090)
                 .usePlaintext()
                 .build();
 

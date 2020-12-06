@@ -13,7 +13,7 @@ import net.devh.boot.grpc.server.service.GrpcService;
 public class CareGrpcController extends CareServiceGrpc.CareServiceImplBase {
     @Override
     public void getHorsesAppointment(CareIdRequest request, StreamObserver<AppointmentResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://careservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("careservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -27,7 +27,7 @@ public class CareGrpcController extends CareServiceGrpc.CareServiceImplBase {
 
     @Override
     public void createAppointment(AppointmentRequest request, StreamObserver<AppointmentResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://careservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("careservice", 9090)
                 .usePlaintext()
                 .build();
 

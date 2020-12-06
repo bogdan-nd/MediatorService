@@ -11,7 +11,7 @@ public class GroomGrpcController extends GroomServiceGrpc.GroomServiceImplBase {
 
     @Override
     public void showGrooms(GroomEmpty request, StreamObserver<GroomResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -24,7 +24,7 @@ public class GroomGrpcController extends GroomServiceGrpc.GroomServiceImplBase {
 
     @Override
     public void showGroomById(GroomIdRequest request, StreamObserver<GroomResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -37,7 +37,7 @@ public class GroomGrpcController extends GroomServiceGrpc.GroomServiceImplBase {
 
     @Override
     public void addGroom(GroomRequest request, StreamObserver<GroomResponse> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
@@ -50,7 +50,7 @@ public class GroomGrpcController extends GroomServiceGrpc.GroomServiceImplBase {
 
     @Override
     public void deleteGroom(GroomIdRequest request, StreamObserver<GroomEmpty> responseObserver) {
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("http://staffservice", 9090)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("staffservice", 9090)
                 .usePlaintext()
                 .build();
 
