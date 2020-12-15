@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Service
 public class HorseService {
-    private static final String HORSE_URL = "http://horseservice:8089/horses";
+    private static final String HORSE_URL = "http://horseservice:8083/horses";
     private final RestTemplate restTemplate = new RestTemplate();
     private final HttpHeaders headers = new HttpHeaders();
     private final HttpEntity<Object> headersEntity = new HttpEntity<>(headers);
