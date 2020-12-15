@@ -1,5 +1,6 @@
 package com.services.mediator.controllers.rest;
 
+import com.services.mediator.entities.Appointment;
 import com.services.mediator.entities.Club;
 import com.services.mediator.entities.Horse;
 import com.services.mediator.entities.dto.AppointmentDTO;
@@ -9,6 +10,11 @@ import com.services.mediator.exceptions.ClubNotFoundException;
 import com.services.mediator.exceptions.HorseNotFoundException;
 import com.services.mediator.services.*;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +26,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("appointments")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CareController {
     private final CareService careService;
     private final ClientService clientService;
@@ -29,6 +35,12 @@ public class CareController {
     private final VetService vetService;
     private final HorseService horseService;
     private final ClubService clubService;
+    private final RabbitTemplate rabbitTemplate;
+
+    @Value("${rabbitmq.care.routingKey}")
+    private String routingKey;
+    @Value("${rabbitmq.exchange}")
+    private String exchange;
 
     @PostMapping("recover")
     public ResponseEntity<String> recoverHorse(@RequestBody AppointmentDTO dto) {
@@ -45,6 +57,12 @@ public class CareController {
                     .status(HttpStatus.NOT_FOUND)
                     .body(exception.getMessage());
         }
+    }
+
+    @PostMapping("rabbitmq")
+    public String createAppointment(@RequestBody AppointmentDTO dto){
+        rabbitTemplate.convertAndSend(exchange,routingKey,dto);
+        return "I've added appointment successfully";
     }
 
     @PostMapping("feed")
@@ -77,7 +95,7 @@ public class CareController {
         ResponseEntity<Club> clubResponse = clubService.getClub();
         Club club = clubResponse.getBody();
 
-        careService.createAppointment(dto);
+        careService.createAppointmentSend(dto);
 
         assert club != null;
         assert horse != null;

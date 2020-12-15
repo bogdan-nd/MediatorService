@@ -1,6 +1,6 @@
 package com.services.mediator.entities.dto;
 
-import com.services.mediator.enums.HorsemanStatus;
+import com.services.mediator.entities.enums.HorsemanStatus;
 import lombok.Data;
 
 import java.util.UUID;

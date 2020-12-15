@@ -3,7 +3,7 @@ package com.services.mediator.services;
 import com.services.mediator.entities.Client;
 import com.services.mediator.entities.Horse;
 import com.services.mediator.entities.dto.HorseDTO;
-import com.services.mediator.enums.HorsemanStatus;
+import com.services.mediator.entities.enums.HorsemanStatus;
 import com.services.mediator.exceptions.HorseNotFoundException;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -12,12 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
 public class HorseService {
-    private static final String HORSE_URL = "http://horseservice:8083/horses";
+    private static final String HORSE_URL = "http://horseservice:8089/horses";
     private final RestTemplate restTemplate = new RestTemplate();
     private final HttpHeaders headers = new HttpHeaders();
     private final HttpEntity<Object> headersEntity = new HttpEntity<>(headers);

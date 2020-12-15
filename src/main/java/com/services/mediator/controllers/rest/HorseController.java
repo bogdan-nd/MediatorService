@@ -4,6 +4,7 @@ import com.services.mediator.entities.Appointment;
 import com.services.mediator.entities.Club;
 import com.services.mediator.entities.Horse;
 import com.services.mediator.entities.dto.HorseDTO;
+import com.services.mediator.entities.dto.TrainingDTO;
 import com.services.mediator.exceptions.ClientNotFoundException;
 import com.services.mediator.exceptions.ClubNotFoundException;
 import com.services.mediator.exceptions.HorseNotFoundException;
@@ -12,6 +13,10 @@ import com.services.mediator.services.ClientService;
 import com.services.mediator.services.ClubService;
 import com.services.mediator.services.HorseService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +26,18 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("horses")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class HorseController {
     private final ClubService clubService;
     private final HorseService horseService;
     private final ClientService clientService;
     private final CareService careService;
+    private final RabbitTemplate rabbitTemplate;
+
+    @Value("${rabbitmq.exchange}")
+    private String exchange;
+    @Value("${rabbitmq.horse.routingKey}")
+    private String routingKey;
 
     @GetMapping
     public ResponseEntity<Horse[]> getHorses() {
@@ -42,6 +53,12 @@ public class HorseController {
                     .status(HttpStatus.NOT_FOUND)
                     .build();
         }
+    }
+
+    @PostMapping("rabbitmq")
+    public String addTrainingMQ(@RequestBody HorseDTO horseDTO) {
+        rabbitTemplate.convertAndSend(exchange,routingKey,horseDTO);
+        return "I've added horse successfully";
     }
 
     @GetMapping("ill")

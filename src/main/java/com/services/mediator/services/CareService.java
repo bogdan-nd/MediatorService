@@ -18,9 +18,9 @@ public class CareService {
     private final HttpHeaders headers = new HttpHeaders();
     private final HttpEntity<Object> headersEntity = new HttpEntity<>(headers);
 
-    public void createAppointment(AppointmentDTO dto){
+    public void createAppointmentSend(AppointmentDTO dto){
         HttpEntity<AppointmentDTO> appointment = new HttpEntity<>(dto);
-        ResponseEntity<Appointment> appointmentResponse = restTemplate.exchange(CARE_URL, HttpMethod.POST,
+        restTemplate.exchange(CARE_URL, HttpMethod.POST,
                 appointment, Appointment.class);
     }
 

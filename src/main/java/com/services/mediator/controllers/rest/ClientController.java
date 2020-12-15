@@ -8,6 +8,10 @@ import com.services.mediator.services.FinanceService;
 import com.services.mediator.services.HorseService;
 import com.services.mediator.services.TrainerService;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +19,18 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("clients")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
     private final TrainerService trainerService;
     private final FinanceService financeService;
     private final HorseService horseService;
+
+    private final RabbitTemplate rabbitTemplate;
+    @Value("${rabbitmq.exchange}")
+    private String exchange;
+    @Value("${rabbitmq.client.routingKey}")
+    private String routingKey;
 
     @GetMapping("connect")
     public ResponseEntity<String> checkConnection(){
@@ -82,6 +92,12 @@ public class ClientController {
     @PostMapping
     public ResponseEntity<Client> addClient(@RequestBody ClientDTO clientDTO) {
        return clientService.addClient(clientDTO);
+    }
+
+    @PostMapping("rabbitmq")
+    public String addClientMQ(@RequestBody ClientDTO clientDTO) {
+        rabbitTemplate.convertAndSend(exchange,routingKey,clientDTO);
+        return "I've added client successfully";
     }
 
 }

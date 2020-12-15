@@ -1,6 +1,6 @@
 package com.services.mediator.entities;
 
-import com.services.mediator.enums.SportsCategory;
+import com.services.mediator.entities.enums.SportsCategory;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

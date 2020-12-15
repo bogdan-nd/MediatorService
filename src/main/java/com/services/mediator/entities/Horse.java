@@ -1,6 +1,6 @@
 package com.services.mediator.entities;
 
-import com.services.mediator.enums.HorsemanStatus;
+import com.services.mediator.entities.enums.HorsemanStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,10 +20,10 @@ public class Horse {
     private LocalDateTime lastTimeEat;
     private int price;
 
-    public Horse(String name, UUID ownerId, HorsemanStatus horsemanStatus, int price){
+    public Horse(String name, String ownerId, HorsemanStatus horsemanStatus, int price){
         this.id = UUID.randomUUID();
         this.name = name;
-        this.ownerId = ownerId;
+        this.ownerId = UUID.fromString(ownerId);
         this.horsemanStatus = horsemanStatus;
         this.isIll = false;
         this.lastTimeEat = LocalDateTime.now().withNano(0);
